@@ -14,19 +14,39 @@ app.get("/", (req, res) => {
 });
 
 app.get("/add", (req, res) => {
-  res.send("");
+  const a = parseInt(req.query.a);
+  const b = parseInt(req.query.b);
+
+  res.json({
+    ans: a + b,
+  });
 });
 
 app.get("/subtract", (req, res) => {
-  res.send("");
+  const a = parseInt(req.query.a);
+  const b = parseInt(req.query.b);
+
+  res.json({
+    ans: a - b,
+  });
 });
 
 app.get("/multiply", (req, res) => {
-  res.send("");
+  const a = parseInt(req.query.a);
+  const b = parseInt(req.query.b);
+
+  res.json({
+    ans: a * b,
+  });
 });
 
 app.get("/divide", (req, res) => {
-  res.send("");
+  const a = parseInt(req.query.a);
+  const b = parseInt(req.query.b);
+
+  res.json({
+    ans: a / b,
+  });
 });
 
 app.listen(port, () => {
