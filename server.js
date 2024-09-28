@@ -13,6 +13,22 @@ app.get("/", (req, res) => {
   );
 });
 
+app.get("/add", (req, res) => {
+  res.send("");
+});
+
+app.get("/subtract", (req, res) => {
+  res.send("");
+});
+
+app.get("/multiply", (req, res) => {
+  res.send("");
+});
+
+app.get("/divide", (req, res) => {
+  res.send("");
+});
+
 app.listen(port, () => {
   console.log(`Server Running on http://localhost:${port}`);
 });
