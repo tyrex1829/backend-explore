@@ -3,16 +3,6 @@ import express from "express";
 const app = express();
 const port = 3001;
 
-app.get("/", (req, res) => {
-  res.send(
-    `<h1>There are four routes you can hit.</h1>
-    <h3><li>multiply</li>
-    <li>add</li>
-    <li>divide</li>
-    <li>subtract</li></h3>`
-  );
-});
-
 app.use(function (req, res, next) {
   req.name = "Tyrex";
   console.log("Accessed");
@@ -31,6 +21,16 @@ app.use(function countRequest(req, res, next) {
   noOfReq = noOfReq + 1;
   console.log(noOfReq);
   next();
+});
+
+app.get("/", (req, res) => {
+  res.send(
+    `<h1>There are four routes you can hit.</h1>
+    <h3><li>multiply</li>
+    <li>add</li>
+    <li>divide</li>
+    <li>subtract</li></h3>`
+  );
 });
 
 app.get("/count-request", logRequest, (req, res) => {
