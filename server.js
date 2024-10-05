@@ -25,6 +25,18 @@ function logRequest(req, res, next) {
   next();
 }
 
+let noOfReq = 0;
+
+app.use(function countRequest(req, res, next) {
+  noOfReq = noOfReq + 1;
+  console.log(noOfReq);
+  next();
+});
+
+app.get("/count-request", logRequest, (req, res) => {
+  res.send(`Total number of requests sent to server: ${noOfReq}`);
+});
+
 app.get("/special", logRequest, (req, res) => {
   res.send("This is route specific middleware.");
 });
