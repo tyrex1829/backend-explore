@@ -20,7 +20,8 @@ app.use(function (req, res, next) {
 });
 
 function logRequest(req, res, next) {
-  console.log(`Request made to: ${req.url}`);
+  const d = new Date();
+  console.log(`method: ${req.method}, url: ${req.url}, timestamp: ${d}`);
   next();
 }
 
