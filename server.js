@@ -13,7 +13,15 @@ app.get("/", (req, res) => {
   );
 });
 
+app.use(function (req, res, next) {
+  req.name = "Tyrex";
+  console.log("Accessed");
+  next();
+});
+
 app.get("/add", (req, res) => {
+  console.log(req.name);
+
   const a = parseInt(req.query.a);
   const b = parseInt(req.query.b);
 
