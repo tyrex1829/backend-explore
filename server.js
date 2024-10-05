@@ -3,6 +3,8 @@ import express from "express";
 const app = express();
 const port = 3001;
 
+app.use(express.json());
+
 app.use(function (req, res, next) {
   req.name = "Tyrex";
   console.log("Accessed");
@@ -31,6 +33,15 @@ app.get("/", (req, res) => {
     <li>divide</li>
     <li>subtract</li></h3>`
   );
+});
+
+app.post("/sum", (req, res) => {
+  const a = parseInt(req.body.a);
+  const b = parseInt(req.body.b);
+
+  res.json({
+    ans: a + b,
+  });
 });
 
 app.get("/count-request", logRequest, (req, res) => {
