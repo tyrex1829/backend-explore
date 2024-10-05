@@ -19,6 +19,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+function logRequest(req, res, next) {
+  console.log(`Request made to: ${req.url}`);
+  next();
+}
+
+app.get("/special", logRequest, (req, res) => {
+  res.send("This is route specific middleware.");
+});
+
 app.get("/add", (req, res) => {
   console.log(req.name);
 
