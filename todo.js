@@ -4,9 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 const app = express();
 const port = 8080;
 
-const todos = [
-  { id: uuidv4(), title: "Todo 1", description: "Desc of todo 1" },
-];
+let todos = [{ id: uuidv4(), title: "Todo 1", description: "Desc of todo 1" }];
 
 app.use(express.json());
 
@@ -43,21 +41,30 @@ app.post("/new-todo", (req, res) => {
   }
 });
 
-app.put("/update-todo", (req, res) => {
+app.patch("/update-todo/:id", (req, res) => {
   try {
-    const { id, title, description } = req.body;
+    const { id } = req.params;
+    console.log("run1");
+
+    const { updateTitle = "", updateDescription = "" } = req.body;
+    console.log("run2");
 
     todos = todos.map((todo) => {
+      console.log("run3");
       if (todo.id === id) {
-        return { ...todo, title, description };
+        console.log("run4");
+        return { ...todo, title: updateTitle, description: updateDescription };
       } else {
+        console.log("run5");
         return todo;
       }
     });
+    console.log("run6");
     return res.status(200).json({
       msg: `Update todo ${id}`,
     });
   } catch (error) {
+    console.log("run err");
     return res.status(404).json({
       msg: `Can't update the todo`,
     });
